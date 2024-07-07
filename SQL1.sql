@@ -39,7 +39,7 @@ ORDER BY ...
 --SELECT AlbumId+3 AS Numara, Title AS Baslik FROM Album;
 --SELECT Album.AlbumId+3 AS Numara, Album.Title AS Baslik FROM Album;
 --SELECT a.AlbumId+3 AS Numara, a.Title AS Baslik FROM Album AS a; -- Tablo isimlendirme
---SELECT a.AlbumId Numara, a.Title Baslik FROM Album a;
+--SELECT a.AlbumId Numara, a.Title Baslik FROM Album a; -- Tavsiye edilen
 
 
 
