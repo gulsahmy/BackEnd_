@@ -54,7 +54,7 @@ console.log(Car ['brand'])
 console.log(Car ['colors'][0])
 console.log(Car ['details']['engineSize'])
 console.log(Car ['startEngine']())
-/* --------------------------------------------------------------- */
+/* --------------------------------------------------------------- *
 //? THIS KEYWORD
 
 const Car = {
@@ -75,23 +75,54 @@ const Car = {
 
     getDetails : function() {
         console.log ( this )
-        return this.details
+        // return this.details
+        // return this.startEngine()
+        // return this.brand + ' ' + this.model + ' ' + this.year
+        return this.brand + ' ' + this.model + ' ' + this.startEngine()
+    },
+
+    arrowMethod : () => {
+       console.log(this)
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(Car.getDetails())
+console.log(Car.arrowMethod())
 
 /* --------------------------------------------------------------- */
+
+//* ARRAY DESTRUCTURİNG:
+
+const testArray = ['value0', 'value1','value2','value3','value4']
+
+// const test0 = testArray[0]
+// const test1 = testArray[1]
+// const test2 = testArray[2]
+// // const test3 = testArray[3]
+// // const test4 = testArray[4]
+
+// // console.log(test0)
+
+// // const testPart = testArray.slice(3,5)
+// const testPart = testArray.slice(3)
+
+// console.log(test0, test1, test2, testPart)
+
+// const [var0, var1, ...varPart] = testArray
+// console.log(var0, var1, varPart)
+
+//! REST OPERATOR:
+
+const [var0, var1, ...varPart] = testArray
+console.log(var0, var1, varPart)
+
+//! SPREAD OPERATOR:
+
+const newArr = [...testArray, 'value5', 'value6']
+console.log(newArr)
+
+
+
+
 /* --------------------------------------------------------------- */
 /* --------------------------------------------------------------- */
