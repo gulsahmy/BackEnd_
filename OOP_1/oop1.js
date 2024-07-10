@@ -89,7 +89,7 @@ const Car = {
 console.log(Car.getDetails())
 console.log(Car.arrowMethod())
 
-/* --------------------------------------------------------------- */
+/* --------------------------------------------------------------- *
 
 //* ARRAY DESTRUCTURİNG:
 
@@ -120,9 +120,67 @@ console.log(var0, var1, varPart)
 
 const newArr = [...testArray, 'value5', 'value6']
 console.log(newArr)
+/* --------------------------------------------------------------- */
 
+//* OBJECT DESTRUCTURİNG:
 
+const Car = {
+    brand : 'Ford',
+    model : 'Mustang',
+    year : 1967,
+    isAutoGear : true,
+    colors : [ 'red', 'white'],
+    details : {
+        color1 : 'red',
+        color2 : 'white',
+        engineSize : 5000
+    },
+    startEngine : function(param = '1') {
+        console.log(param)
+        return 'Engine started.'
+    }
+}
 
+//REST Operator (KEY isimleri önemli!)
+// const { brand, year, model, ...others } = Car
+// console.log(brand, year, model, others)
+
+// İsim değiştirme:
+// const { brand, year, model: newName, ...others } = Car
+// console.log(brand, year, newName, others)
+
+// SPREAD Operator:
+// const newObj = { ...Car, newKey: 'newValue'}
+// console.log(newObj)
+
+// giden gelen data her zaman 'string' olur.
+// bir objeyi dışarı aktarmanın en basit yolu onu 'json' a dönüştürmektir.
 
 /* --------------------------------------------------------------- */
+//! Object to JSON:
+
+// console.log(typeof Car, Car)
+// const json = JSON.stringify(Car)
+// console.log(typeof json, json)
+
+//! // JSON to Object:
+
+// const obj = JSON.parse(json)
+// console.log(typeof obj, obj)
+
+//! Array to JSON:
+
+// const arr = Object.keys(Car)
+// console.log(arr)
+
+// const arr = Object.values(Car)
+// console.log(arr)
+
+const arr = Object.entries(Car) //? Object formatındaki array e dönüştürür.(enumarate Type)
+console.log(arr)
+
+
+
+
+
 /* --------------------------------------------------------------- */
