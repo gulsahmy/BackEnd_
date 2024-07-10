@@ -120,7 +120,7 @@ console.log(var0, var1, varPart)
 
 const newArr = [...testArray, 'value5', 'value6']
 console.log(newArr)
-/* --------------------------------------------------------------- */
+/* --------------------------------------------------------------- *
 
 //* OBJECT DESTRUCTURİNG:
 
@@ -156,7 +156,7 @@ const Car = {
 // giden gelen data her zaman 'string' olur.
 // bir objeyi dışarı aktarmanın en basit yolu onu 'json' a dönüştürmektir.
 
-/* --------------------------------------------------------------- */
+/* --------------------------------------------------------------- *
 //! Object to JSON:
 
 // console.log(typeof Car, Car)
@@ -170,17 +170,54 @@ const Car = {
 
 //! Array to JSON:
 
-// const arr = Object.keys(Car)
+const arr = Object.keys(Car)
 // console.log(arr)
 
 // const arr = Object.values(Car)
 // console.log(arr)
 
-const arr = Object.entries(Car) //? Object formatındaki array e dönüştürür.(enumarate Type)
-console.log(arr)
+// const arr = Object.entries(Car) //? Object formatındaki array e dönüştürür.(enumarate Type)
+console.log(typeof arr, arr)
+
+const arrToJSON = JSON.stringify(arr)
+console.log(typeof arrToJSON, arrToJSON)
+
+const jsonToArr = JSON.parse(arrToJSON)
+console.log(jsonToArr)
+
+//! object ve array için parse kullanıyoruz.
+/* --------------------------------------------------------------- */
+
+//? CONSTRUCTOR FUNCTION:
+ 
+// const contructorFunction = function () {
+//     this.property = 'value'
+// }
+/* --------------------------------------------------------------- */
+
+// 'NEW' Keyword:
+
+const carConstructor = function (brand, model, year = 2000) {
+    this.brand = brand
+    this.model = model
+    this.year = year
+
+    this.startEngine = function () {
+        // console.log(this)
+        return 'Engine started.'
+    }
+}
+//! NEW İLE OLUŞTURULAN OBJELER PASCALCASE İLE İSİMLENDİRİLİR:
+
+const Ford = new carConstructor('Opel', 'Meriva', 2004)
+console.log(Ford)
+
+const Mercedes = new carConstructor('Mercedes', 'CLK200', 2015)
+console.log(Mercedes)
+console.log(Mercedes.brand)
+console.log(Mercedes.startEngine())
 
 
 
-
-
+/* --------------------------------------------------------------- */
 /* --------------------------------------------------------------- */
