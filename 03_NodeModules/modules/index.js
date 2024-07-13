@@ -50,19 +50,34 @@
 // module.exports.test3 = test3
 /* ------------------------------------------------ */
 // Module export => function expression
-module.exports.test1 = function() {
-    console.log('test1 çalıştı.')
-}
-module.exports.test2 = function() {
-    console.log('test2 çalıştı.')
-}
-module.exports.test3 = function() {
-    console.log('test3 çalıştı.')
-}
+// module.exports.test1 = function() {
+//     console.log('test1 çalıştı.')
+// }
+// module.exports.test2 = function() {
+//     console.log('test2 çalıştı.')
+// }
+// module.exports.test3 = function() {
+//     console.log('test3 çalıştı.')
+// }
 
-module.exports.newVar = 'new-value'
+// module.exports.newVar = 'new-value'
 
+/* ------------------------------------------- */
 
+// module.exports = {
+
+//     test1: function() {
+//         console.log('test1 çalıştı')
+//     },
+//     test2: function() {
+//         console.log('test2 çalıştı')
+//     },
+//     test3: function() {
+//         console.log('test3 çalıştı')
+//     },
+    
+//     newVar: 'extra value'
+// }
 
 
 

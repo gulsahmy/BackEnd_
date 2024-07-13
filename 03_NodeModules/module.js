@@ -37,12 +37,18 @@
 
 //! Object Destructuring:
 
-const {test3:func3, test1:func1, test2:func2, newVar} =  require('./modules/')
+// const {test3:func3, test1:func1, test2:func2, newVar} =  require('./modules/')
 
-func3()
-func1()
-func2()
-console.log(newVar)
+// func3()
+// func1()
+// func2()
+// console.log(newVar)
+
+// const {test1, test2, test3, newVar} = require('./modules/')
+// test1()
+// test2()
+// test3()
+// console.log(newVar)
 
 
 /* ------------------------------------------------ */
