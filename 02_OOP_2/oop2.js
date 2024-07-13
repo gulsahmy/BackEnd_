@@ -223,32 +223,38 @@ class Car extends Vehicle {
         return this.isRunning
     }
 }    
+
+   getDetails() {
+        console.log('Car Class getDetails()')
+        super.getDetails()
+    }
+}
+
 const Ford = new Car('Ford', 'Mustang', 1967, 'Car')
-console.log(Ford)
+// console.log(Ford)
 console.log(Ford.runEngine())
-console.log(Ford.vehicleIsActive)
-/* ----------------------------------------------------- *
-// //* Piyasa Standartı İsimlendirme:
+console.log(Ford.vehicleIsActive) // public: erişebilir, protected: erişemez, private: erişemez.
 
-// const BUYUK_HARF_ISIMLENDIRME = Bu bir constant değişkendir. Developer olarak bunu silme, değiştirirken dikkatli ol.
-// const _alttanTireIleBaslayan = BU bir proctected değişkendir. Developer olarak buna dokunma (erişme bile)
+/* ------------------------------------------------------- *
+//* Piyasa Standartı İsimlendirme:
 
+const BUYUK_HARF_ISIMLENDIRME = Bu bir constant değişkendir. Developer olarak bunu silme, değiştirirken dikkatli ol.
+const _alttanTireIleBaslayan = BU bir proctected değişkendir. Developer olarak buna dokunma (erişme bile)
 
-/* ----------------------------------------------------- */
-
+/* ------------------------------------------------------- */
 //? GETTER & SETTER METHODS: Görevi veri getirme (getter) ve veri güncelleme (setter) olan metodlardır.
 //? "STATIC" KEYWORD: Class'dan direkt erişim. (Instance erişemez.)
 
-
 class Car {
 
-    isRunning = false  
-    #price = 99 
+    isRunning = false
+    #price = 99
 
-    constructor(brand, model, year){
+    constructor(brand, model, year) {
         this.brand = brand
         this.model = model
         this.year = year
+
     }
 
     runEngine() {
@@ -257,25 +263,46 @@ class Car {
         return this.isRunning
     }
 
-    get getPrice(){
+    get getPrice() {
+        console.log('Fiyat yazılıyor:')
         return this.#price
     }
 
     set setPrice(price) {
+        console.log('Fiyat güncellendi.')
         this.#price = price
-        return 'Fiyat güncellendi.'
     }
-}    
+
+    // Statics:
+
+    static staticProp = 'bu bir static değerdir.'
+
+    static staticMethod() {
+        return 'bu bir static methoddur.'
+    }
+
+}
 
 const Ford = new Car('Ford', 'Mustang', 1967)
-console.log(Ford)
-console.log(Ford.price)
-console.log(Ford.getPrice)
-// Ford.setPrice(8000)
-Ford.setPrice = 8000
-console.log(Ford.getPrice)
+// console.log(Ford)
+// // console.log(Ford.price) // Private olduğu için erişilemez.
+// // console.log(Ford.getPrice()) // Normal Method
+// console.log(Ford.getPrice) // Getter methodlar bir property gibi çağrılır. (parantez yok)
+// // Ford.setPrice(80000) // Normal method
+// Ford.setPrice = 80000 // Setter methodlar bir propertyy gibi güncellenebilir.
+// console.log(Ford.getPrice)
+
+//* STATICS
+// Static değerlere sadece ana CLASS ile erişilebilir.
+console.log( Car.staticProp )
+console.log( Car.staticMethod() )
+console.log( Car )
+// Static özellik/metodlara instance ile erişilemez.
+console.log( Ford.staticProp )
 
 
+/* ------------------------------------------------------- */
+//? ABSTRACTION: Soyutlama/Modelleme (Class ile obje üretebilme. Aynı amaç için kullanılan değişken ve methodların bir class içinde yazıyor olması)
+//? ENCAPCULLATION: Kapsülleme/Ayrıştırma (Kodların gizliliği, private değişkenlere erişilemiyor olması ve birbirinden bağımsız çalışmaları.)
+/* ------------------------------------------------------- */
 
-
-/* ----------------------------------------------------- */
