@@ -53,6 +53,44 @@ app.get('/user/:id', function(req, res){
                 })
         }
 })
+/* ---------------------------------------------------------------- *
+//ASYNC:
+
+const asyncFunction = async () => {
+        throw new Error('async-error')
+}
+app.get('/async', async (req, res, next) => {
+
+        await asyncFunction()
+        .then() // çıktıda hata yok.
+        .catch((err) => {next(err)}) // çıktıda hata var.
+
+})
+
+/* ---------------------------------------------------------------- */
+
+// express-async-errors
+// $ npm i express-async-errors
+
+// Async fonksiyonlardaki hataları errorHandler a yönlendirir:
+require('express-async-errors')
+
+const asyncFunction = async () => {
+        throw new Error('async-error')
+}
+app.get('/async', async (req, res, next) => {
+
+        // await asyncFunction()
+        res.errorStatusCode = 400
+        throw new Error('async-error', { cause: 'async function içinde bir hatadır.'})
+})
+
+
+
+
+
+/* ---------------------------------------------------------------- */
+/* ---------------------------------------------------------------- */
 /* ---------------------------------------------------------------- */
 // ErrorHandler 4 parametreli olmak zorunda. Hata yakalayıcı parametre 1. parametredir.
 // ErrorHandler en sonda yer almalı
@@ -63,7 +101,9 @@ const errorHandler = (error, req, res, next) => {
 
         res.status(statusCode).send({
                 error: true,
-                message: error.message
+                message: error.message,
+                cause: error.cause,
+                stack: error.stack,
         })
 }
 app.use(errorHandler)
