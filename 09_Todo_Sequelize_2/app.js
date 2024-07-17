@@ -139,11 +139,21 @@ router.get('/:id', async (req, res) => {
     })
 })
 
+// UPDATE TODO:
+router.put('/:id', async (req, res) => {
 
+    // const data = await Todo.update({...newData}, {...filter})
+     const data = await Todo.update(req.body, { where: { id: req.params.id }})
+    //  console.log(data)
 
+     res.status(202).send({
+        error: false,
+        result: data,
+        message: (data[0] ? 'Updated' : 'Not Updated.'),
+        new: await Todo.findByPk(req.params.id) // Güncellenmiş kaydı göster.
+     })
 
-
-
+})
 
 
 
