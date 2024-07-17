@@ -152,15 +152,47 @@ router.put('/:id', async (req, res) => {
         message: (data[0] ? 'Updated' : 'Not Updated.'),
         new: await Todo.findByPk(req.params.id) // Güncellenmiş kaydı göster.
      })
-
 })
 
+// DELETE TODO:
+router.delete('/:id', async (req, res) => {
+
+    // const data = await Todo.destroy({...filter})
+    const data = await Todo.destroy({ where: { id: req.params.id } })
+    // console.log(data)
+
+    // res.status(204).send({
+    //     error: false,
+    //     result: data,
+    //     message: (data>=1 ? 'Deleted' : 'Can not Deleted.')
+    // })
+
+    if (data >= 1){
+        //Deleted:
+        // res.status(200).send({
+        //     error: false,
+        //     result: data,
+        //     message: 'Deleted.'
+        // })
+
+       res.sendStatus(204)  // sadece status çıktısı ver.
+
+    } else {
+        // Not deleted:
+        // res.status(404).send({
+        //     error: true,
+        //     result: data,
+        //     message: 'Can not Deleted.'
+        // })
+
+            res.errorStatusCode = 404
+            throw new Error ('Can not deleted. Maybe already deleted.')
+
+    }
 
 
 
-
-
-
+})
 
 
 
