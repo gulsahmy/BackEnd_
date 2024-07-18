@@ -86,7 +86,7 @@ const BlogPostSchema = new mongoose.Schema({
     // updatedAt // timestamps: true
 
 }, {
-    collection: blogPost,
+    collection: 'blogPost',
     timestamps: true
 })
 
