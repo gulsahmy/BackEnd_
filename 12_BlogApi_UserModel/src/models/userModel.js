@@ -6,7 +6,18 @@ const mongoose = require('mongoose')
 /* --------------------------------------------------------- */
 // Password Encrypt (PBKDF2 Method) : 
 
-const cryptp = require('node:crypto')
+const crypto = require('node:crypto')
+
+//Parameters:
+const keyCode = process.env.SECRET_KEY // Şifreleme anahtarı
+const loopCount = 10000 // Döngü Sayısı
+const charCount = 32 // write 32 for 64
+const encType = 'sha512' // Şifreleme algoritması
+
+const passwordEncrypt = function (password) {
+
+    return crypto.pbkdf2Sync(password, keyCode, loopCount, charCount, encType ).toString("hex")
+}
 
 /* --------------------------------------------------------- */
 
@@ -26,10 +37,9 @@ const UserSchema = new mongoose.Schema({
         // required: true
         required: [true, 'Password is required.'], 
 
-        set: (password) => { // Veri kaydederken, return edilen data kaydedilir}
-            console.log(password)
-            return 'gulsah'
-    },
+        // set: (password) => passwordEncrypt(password)// Veri kaydederken, return edilen data kaydedilir}
+        set: passwordEncrypt    // kısaca..
+
 },
 
     firstName: String,
