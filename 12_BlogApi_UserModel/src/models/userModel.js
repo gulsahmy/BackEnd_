@@ -28,7 +28,21 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         unique: true,
         // required: true        
-        required: [true, 'Email is required.']        
+        required: [true, 'Email is required.'],        
+        // validate: (email) => { // return=true ise kaydeder.
+        //    if(email.includes('@') && email.includes('.')) {
+        //     return true
+        //    } else {
+        //     return false
+        //    }
+        // }
+        // validate: (email) => (email.includes('@') && email.includes('.'))  // kısaca..
+        validate: [
+            (email) => (email.includes('@') && email.includes('.')),
+            'Email type is incorrect.'
+        ]
+
+
     },
 
     password: {
@@ -38,8 +52,27 @@ const UserSchema = new mongoose.Schema({
         required: [true, 'Password is required.'], 
 
         // set: (password) => passwordEncrypt(password)// Veri kaydederken, return edilen data kaydedilir}
-        set: passwordEncrypt    // kısaca..
+        // set: passwordEncrypt    // kısaca..
+        // Set methodu validate methodundan önce çalışır. Dolayısıyla validate data aynı formatta kalır.
 
+        // set: (password) => {
+        //     if (password.length >= 8){
+        //         return passwordEncrypt(password)
+        //     } else {
+        //         return ' wrong '
+        //     }
+        // },
+        // validate: (password) => {
+        //     if (password == 'wrong') {
+        //         return false
+        //     } else {
+        //         return true
+        //     }
+        // }
+        set: (password) => (password.length >=8 ? passwordEncrypt(password) : 'wrong'), // kısaca..
+        validate: (password) => (password != 'wrong') // kısaca..
+
+        //! Güncelleme yaparken default olarak validate çalışmaz.
 },
 
     firstName: String,
