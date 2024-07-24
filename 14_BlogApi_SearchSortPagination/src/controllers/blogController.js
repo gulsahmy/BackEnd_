@@ -92,10 +92,22 @@ module.exports.blogPost = {
 
     list: async (req, res) => {
 
+        //? SEARCHING & SORTING & PAGINATION
+
+        //? FILTERING:
+        //? URL?filter[fieldName1]=value1&filter[fieldName2]=value2
+
+        //? SEARCHING:
+        //? URL?search[fieldName1]=value1&search[fieldName2]=value2
+
+        //? SORTING:
+        //? URL?sort[fieldName1]=value1&sort[fieldName2]=value2
+
         // const data = await BlogPost.find({...filter}, {...select})
         // const data = await BlogPost.find({}, {categoryId: true, title: true, content: true})
         // const data = await BlogPost.find({}, {_id: 1, categoryId: 1, title: 1, content: 1})
-        const data = await BlogPost.find({}, {categoryId: true, title: true, content: true}).populate('categoryId')
+        // const data = await BlogPost.find({}, {categoryId: true, title: true, content: true}).populate('categoryId')
+        const data = await BlogPost.find().populate('categoryId')
 
         res.status(200).send({
             error: false,

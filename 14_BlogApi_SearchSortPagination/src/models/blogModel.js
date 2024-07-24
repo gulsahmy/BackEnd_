@@ -88,6 +88,11 @@ const BlogPostSchema = new mongoose.Schema({
         required: true
     },
 
+    published: {
+        type: Boolean,
+        default: true
+    }
+
     // createdat // timestamps: true
     // updatedAt // timestamps: true
 
