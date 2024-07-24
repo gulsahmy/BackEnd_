@@ -36,12 +36,20 @@ app.use(session({       // General Settings.
 
 
 /* ------------------------------------------------------- */
+// Middleware for check user data from session:
+
+app.use(require('./src/middlewares/userControl'))
+
+
+/* ------------------------------------------------------- */
 
 
 app.all('/', (req, res) => {
     res.send({
-        session: req.session,
+        
         message: 'WELCOME TO BLOG API',
+        session: req.session,
+        user: req.user
     })
 })
 /* ------------------------------------------------------- */
@@ -55,7 +63,7 @@ app.use('/auth', require('./src/routes/authRouter'))
 
 
 // Catch Errors:
-app.use(require('./src/errorHandler'))
+app.use(require('./src/middlewares/errorHandler'))
 
 /* ------------------------------------------------------- */
 
