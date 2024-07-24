@@ -49,7 +49,8 @@ app.all('/', (req, res) => {
         
         message: 'WELCOME TO BLOG API',
         session: req.session,
-        user: req.user
+        user: req.user,
+        isLogin: (req.user ? true : false )
     })
 })
 /* ------------------------------------------------------- */

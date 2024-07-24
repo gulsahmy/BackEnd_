@@ -64,6 +64,12 @@ const BlogPostSchema = new mongoose.Schema({
 
     // _id,
 
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+
     categoryId: {
         type: mongoose.Schema.Types.ObjectId, // hexadecimal format: 'fedcba9876543210'
         ref: 'BlogCategory', // ID nin hangi modele ait olduğunu belirtir.
