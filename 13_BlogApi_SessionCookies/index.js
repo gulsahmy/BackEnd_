@@ -20,10 +20,29 @@ require('./src/dbConnection')()
 
 // Catch error from async:
 require('express-async-errors')
+/* ------------------------------------------------------- */
+// SessionCookies:
+// http://expressjs.com/en/resources/middleware/cookie-session.html
+// https://www.npmjs.com/package/cookie-session
+//* $npm i cookie-session
+
+const session = require('cookie-session')
+
+app.use(session({       // General Settings.
+    secret: process.env.SECRET_KEY, // Cookie datası şifreleme anahtarı
+    // maxAge: 1000 * 60 * 60 * 24 * 3 // miliSeconds // 3 Days
+
+}))
+
+
+/* ------------------------------------------------------- */
 
 
 app.all('/', (req, res) => {
-    res.send('WELCOME TO BLOG API')
+    res.send({
+        session: req.session,
+        message: 'WELCOME TO BLOG API',
+    })
 })
 /* ------------------------------------------------------- */
 // Routes:

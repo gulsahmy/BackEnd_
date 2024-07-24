@@ -3,7 +3,7 @@
     EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
 const mongoose = require('mongoose')
-/* --------------------------------------------------------- */
+/* --------------------------------------------------------- *
 // Password Encrypt (PBKDF2 Method) : 
 
 const crypto = require('node:crypto')
@@ -18,6 +18,11 @@ const passwordEncrypt = function (password) {
 
     return crypto.pbkdf2Sync(password, keyCode, loopCount, charCount, encType ).toString("hex")
 }
+
+/* --------------------------------------------------------- */
+// call from file:
+
+const passwordEncrypt = require('../helpers/passwordEncrypt')
 
 /* --------------------------------------------------------- */
 
