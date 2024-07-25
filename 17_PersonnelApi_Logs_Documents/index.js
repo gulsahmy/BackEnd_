@@ -71,6 +71,16 @@ app.use(morgan('combined', {
 
 
 /* ------------------------------------------------------------------- */
+// DOCUMENTATION:
+// $ npm i swagger-autogen
+// $ npm i swagger-ui-express
+// $ npm i redoc-express
+
+
+
+
+
+/* ------------------------------------------------------------------- */
 // Morgan Logger:
 
 app.use(require("./src/middlewares/logger"))
