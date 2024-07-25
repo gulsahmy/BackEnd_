@@ -37,8 +37,10 @@ app.use(session({       // General Settings.
 
 /* ------------------------------------------------------- */
 // Middleware for check user data from session:
-
 app.use(require('./src/middlewares/userControl'))
+
+// Middleware for queryHandler (Search, Sort, Page)
+app.use(require('./src/middlewares/findSearchSortPage'))
 
 
 /* ------------------------------------------------------- */
