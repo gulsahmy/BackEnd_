@@ -77,7 +77,19 @@ app.use(morgan('combined', {
 // $ npm i redoc-express
 
 
+//JSON:
+app.use('/documents/json', (req, res) => {
+  res.sendFile('swagger.json', { root: '.'})
+})
 
+//SWAGGER:
+const swaggerUi = require('swagger-ui-express')
+const swaggerJson = require ('./swagger.json')
+app.use('/documents/swagger', swaggerUi.serve, swaggerUi.setup(swaggerJson, { swaggerOptions: { persistAuthorization: true } }))
+
+//redoc
+const redoc = require('redoc-express')
+app.use('/documents/redoc', redoc({ specUrl: '/documents/json', title: 'Redoc' }))
 
 
 /* ------------------------------------------------------------------- */

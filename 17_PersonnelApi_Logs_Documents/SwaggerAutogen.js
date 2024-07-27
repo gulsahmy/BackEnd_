@@ -1,7 +1,7 @@
 "use strict"
 
 require('dotenv').config()
-const HOST = process.env?.HOST || 'http://127.0.0.1'
+const HOST = process.env?.HOST || '127.0.0.1'
 const PORT = process.env?.PORT || 8000
 
 
@@ -51,10 +51,15 @@ const document = {
             description: 'Simple Token Authentication * Example: <b>Token ...tokenKey...</b>'
         }
     },
+    
     security: [
         { Token: [] }
     ], 
+
     definitions: {
+        "Department": require('./src/models/department.model').schema.obj, 
+        "Personnel": require('./src/models/personnel.model').schema.obj, 
+
 
     }
 }
