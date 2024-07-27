@@ -1,5 +1,4 @@
 "use strict";
-
 const departments = [
   {
     name: "Information Technology",
