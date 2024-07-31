@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "64c5ed12345a123456789016",
+    "username": "admin",
+    "password": "aA*12345",
+    "email": "admin@example.com",
+    "isActive": true,
+    "isAdmin": true
+  },
+  {
+    "_id": "64c5ed12345a123456789017",
+    "username": "test1",
+    "password": "aA*12345",
+    "email": "test1@example.com",
+    "isActive": true,
+    "isAdmin": false
+  },
+  {
+    "_id": "64c5ed12345a123456789018",
+    "username": "test2",
+    "password": "aA*12345",
+    "email": "test2@example.com",
+    "isActive": true,
+    "isAdmin": false
+  },
+  {
+    "_id": "64c5ed12345a123456789019",
+    "username": "test3",
+    "password": "aA*12345",
+    "email": "test3@example.com",
+    "isActive": false,
+    "isAdmin": false
+  }
+]
