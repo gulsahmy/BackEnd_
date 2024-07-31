@@ -1,0 +1,41 @@
+[
+  {
+    "_id": "64c5ed12345a123456789020",
+    "name": "Pepperoni Pizza",
+    "image": "https://example.com/images/pepperoni-pizza.jpg",
+    "price": 10,
+    "toppingIds": ["64c5ed12345a123456789012"]
+  },
+  {
+    "_id": "64c5ed12345a123456789021",
+    "name": "Mushroom Pizza",
+    "image": "https://example.com/images/mushroom-pizza.jpg",
+    "price": 15,
+    "toppingIds": ["64c5ed12345a123456789013"]
+  },
+  {
+    "_id": "64c5ed12345a123456789022",
+    "name": "Deluxe Pizza",
+    "image": "https://example.com/images/deluxe-pizza.jpg",
+    "price": 20,
+    "toppingIds": [
+      "64c5ed12345a123456789012",
+      "64c5ed12345a123456789013",
+      "64c5ed12345a123456789014"
+    ]
+  },
+  {
+    "_id": "64c5ed12345a123456789023",
+    "name": "Vegetarian Pizza",
+    "image": "https://example.com/images/vegetarian-pizza.jpg",
+    "price": 25,
+    "toppingIds": ["64c5ed12345a123456789013", "64c5ed12345a123456789014"]
+  },
+  {
+    "_id": "64c5ed12345a123456789024",
+    "name": "Meat Lover's Pizza",
+    "image": "https://example.com/images/meat-lovers-pizza.jpg",
+    "price": 30,
+    "toppingIds": ["64c5ed12345a123456789012", "64c5ed12345a123456789015"]
+  }
+]
