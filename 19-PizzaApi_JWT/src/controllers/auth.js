@@ -99,6 +99,46 @@ module.exports = {
                 }
             }
         */
+
+        const refreshToken = req.body?.bearer?.refresh
+
+        if (refreshToken) {
+
+            const refreshData = await jwt.verify(refreshToken, process.env.REFRESH_KEY)
+            // console.log(refreshData)
+
+            if (refreshData) {
+
+                const user = await User.findOne({ _id: refreshData._id })
+                
+                if (user && user.password == refreshData.password) {
+
+                    if (user.isActive) {
+
+                        res.status(200).send({
+                            error: false,
+                            bearer: {
+                                access: jwt.sign(user.toJSON(), process.env.ACCESS_KEY, { expiresIn: '30m' })
+                            }
+                        })
+
+                    } else {
+                        res.errorStatusCode = 401
+                        throw new Error("This account is not active.")
+                    }
+                } else {
+                    res.errorStatusCode = 401
+                    throw new Error('Wrong id or password.')
+                }
+            } else {
+                res.errorStatusCode = 401
+                throw new Error('JWT refresh data is wrong.')
+            }
+        } else {
+            res.errorStatusCode = 401
+            throw new Error('Please enter bearer.refresh')
+        }
+
     },
 
     logout: async (req, res) => {
