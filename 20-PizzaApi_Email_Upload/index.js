@@ -125,6 +125,11 @@ app.all("/", (req, res) => {
 });
 
 /* ------------------------------------------------------- */
+  // staticfile:
+  app.use('/uploads', express.static('./uploads'))
+
+
+/* ------------------------------------------------------- */
 
 // errorHandler:
 app.use(require("./src/middlewares/errorHandler"));
