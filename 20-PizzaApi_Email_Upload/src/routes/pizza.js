@@ -11,25 +11,19 @@ const router = require("express").Router();
 const multer = require('multer')
 
 const upload = multer({
-
    // dest: './uploads'
-
   storage: multer.diskStorage({
-
     destination: './uploads',
     filename: function (req, file, returnCallback) {
       // console.log('file', file)
       // returnCallback(error, fileName)
-      returnCallback(null, 'glsh.jpg')
+      // returnCallback(error, file.originalname)
+      // returnCallback(null, 'glsh.jpg')
+      returnCallback(null, Date.now() + '_' + file.originalname)
     }
  })
 })
 
-
-
-
-
-/* ------------------------------------------------------- */
 /* ------------------------------------------------------- */
 // routes/pizza:
 
@@ -46,8 +40,8 @@ router.route("/")
 router
   .route("/:id")
   .get(pizza.read)
-  .put(pizza.update)
-  .patch(pizza.update)
+  .put(upload.single('image'), pizza.update)
+  .patch(upload.single('image'),pizza.update)
   .delete(pizza.delete);
 
 /* ------------------------------------------------------- */

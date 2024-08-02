@@ -6,13 +6,13 @@ module.exports = function sendMail(to, subject, message) {
 
     // GoogleMail (gmail)
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'qadir@clarusway.com',
-      pass: 'krkh fxow gujl cjhf'
-    }
-  })
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//       user: 'qadir@clarusway.com',
+//       pass: 'krkh fxow gujl cjhf'
+//     }
+//   })
 
   // SendMail:
 transporter.sendMail({

@@ -66,23 +66,20 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    /*
+        /*
             #swagger.tags = ["Pizzas"]
             #swagger.summary = "Update Pizza"
         */
 
             /* FILE */
+            // console.log('file', req.file) // single
+            // console.log('files', req.files) // array || any
 
-            console.log(req.file) // single
-            console.log(req.files) // array || any
+                if (req.file) {
+                  req.body.image = req.file.filename
+                }
 
-
-
-            /* FILE */
-
-
-
-            
+            /* FILE */            
 
     const data = await Pizza.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
